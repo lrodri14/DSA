@@ -1,12 +1,4 @@
-# Trees Data Structure Implementation
-
-# Binary Search Tree Implementation
-# Goal
-#      9
-#    4  20
-#   1 6 15 100
-import time
-
+# Binary Search Tree Searching Traversal
 
 class Node:
 
@@ -70,6 +62,19 @@ class BinarySearchTree:
             if current.right is not None:
                 element_queue.append(current.right)
             element_queue.pop(0)
+
+    def traverse_tree_level_order_r(self, queue, array):
+        if self.root is None:
+            return
+        if len(queue) == 0:
+            return array
+        current_node = queue.pop(0)
+        array.append(current_node.value)
+        if current_node.left:
+            queue.append(current_node.left)
+        if current_node.right:
+            queue.append(current_node.right)
+        return self.traverse_tree_level_order_r(queue, array)
 
     def traverse_tree_preorder(self, node):
         if node is None:
@@ -181,41 +186,22 @@ class BinarySearchTree:
                         del current_node
                         return
 
-tree = BinarySearchTree()
-tree.insert(77)
-tree.insert(55)
-tree.insert(89)
-tree.insert(12)
-tree.insert(34)
-tree.insert(56)
-tree.insert(78)
-tree.insert(97)
-tree.insert(100)
-tree.insert(32)
-tree.insert(75)
-tree.insert(98)
-tree.insert(43)
-tree.insert(21)
-tree.insert(92)
-# tree.lookup(20)
-# tree.lookup(18)
-# tree.traverse_tree_level_order()
-# tree.traverse_tree_preorder(tree.root)
-# tree.traverse_tree_inorder(tree.root)
-# tree.traverse_tree_level_order()
-tree.remove(77)
-tree.traverse_tree_level_order()
-tree.remove(98)
-tree.traverse_tree_level_order()
-tree.remove(32)
-tree.traverse_tree_level_order()
-tree.remove(34)
-tree.traverse_tree_level_order()
-tree.remove(89)
-tree.traverse_tree_level_order()
-tree.insert(11)
-tree.insert(10)
-tree.remove(12)
-tree.traverse_tree_level_order()
+# tree = BinarySearchTree()
+# tree.insert(77)
+# tree.insert(55)
+# tree.insert(89)
+# tree.insert(12)
+# tree.insert(34)
+# tree.insert(56)
+# tree.insert(78)
+# tree.insert(97)
+# tree.insert(100)
+# tree.insert(32)
+# tree.insert(75)
+# tree.insert(98)
+# tree.insert(43)
+# tree.insert(21)
+# tree.insert(92)
+# print(tree.traverse_tree_level_order_r([tree.root], []))
 
-
+# Graph Searching Traversal
